@@ -1,0 +1,9 @@
+<resources>
+    <string name = "app_name">Rhythmbox</string>
+
+    <string name = "defaultTitle">Title</string>
+    <string name = "defaultArtist">Artist</string>
+    <string name = "defaultParenthesis">parenthesis</string>
+    <string name = "defaultStats">statistics</string>
+
+</resources>

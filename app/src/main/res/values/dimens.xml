@@ -1,0 +1,60 @@
+<resources>
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Icons -->
+
+    <dimen name="addico">25dp</dimen>
+    <dimen name="backico">25dp</dimen>
+    <dimen name="createico">25dp</dimen>
+    <dimen name="stattoggleico">25dp</dimen>
+    <dimen name="uploadico">25dp</dimen>
+    <dimen name="youtubeico">25dp</dimen>
+    <dimen name="folderico">25dp</dimen>
+    <dimen name="pauseico">48dp</dimen>
+    <dimen name="playico">48dp</dimen>
+    <dimen name="playlistviewico">25dp</dimen>
+    <dimen name="settingsico">48dp</dimen>
+    <dimen name="statico">25dp</dimen>
+    <dimen name="beatico">25dp</dimen>
+    <dimen name="notico">25dp</dimen>
+    <dimen name="tnextico">48dp</dimen>
+    <dimen name="tpreviousico">48dp</dimen>
+    <dimen name="playingico">25dp</dimen>
+    <dimen name="saveico">25dp</dimen>
+    <dimen name="exportico">25dp</dimen>
+
+    <!-- Buttons -->
+
+    <dimen name="back">65dp</dimen>
+    <dimen name="prev">75dp</dimen>
+    <dimen name="next">75dp</dimen>
+    <dimen name="stat">75dp</dimen>
+    <dimen name="plvi">75dp</dimen>
+    <dimen name="play">75dp</dimen>
+    <dimen name="savebutton">75dp</dimen>
+    <dimen name="paus">75dp</dimen>
+    <dimen name="alar">200dp</dimen>
+    <dimen name="seekh">30dp</dimen>
+    <dimen name="seekw">250dp</dimen>
+
+    <!-- Recycler -->
+
+    <dimen name="elemental">50dp</dimen>
+    <dimen name="elemental_margin">5dp</dimen>
+    <dimen name="elemental_padding">10dp</dimen>
+    <dimen name="elemental_text">20dp</dimen>
+    <dimen name="album_art_rounder">5dp</dimen>
+
+    <dimen name="elementaledit">100dp</dimen>
+
+    <!-- Text -->
+
+    <dimen name="trackTitle">30dp</dimen>
+    <dimen name="trackArtist">20dp</dimen>
+    <dimen name="stats">20dp</dimen>
+
+    <dimen name="statTitle">15dp</dimen>
+    <dimen name="statMargin">30dp</dimen>
+
+</resources>

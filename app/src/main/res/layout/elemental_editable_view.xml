@@ -1,0 +1,64 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/elementaledit"
+    android:gravity="center_vertical"
+
+    android:layout_marginLeft="@dimen/elemental_margin"
+    android:layout_marginRight="@dimen/elemental_margin"
+    android:layout_marginBottom="@dimen/elemental_padding"
+    android:layout_marginTop="@dimen/elemental_padding"
+
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/elementE">
+
+        <ImageView
+            android:id="@+id/elementalAlbumArt"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:src="@mipmap/album_art"
+            android:background="@drawable/roundedsmall"
+            android:adjustViewBounds="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/elementH">
+
+            <EditText
+                android:id="@+id/titleView"
+                style="@style/textViewTheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:inputType="text"
+                android:text="@string/defaultTitle"/>
+
+            <EditText
+                android:id="@+id/artistView"
+                style="@style/textViewTheme"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="normal"
+                android:inputType="text"
+                android:textSize="15dp"/>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

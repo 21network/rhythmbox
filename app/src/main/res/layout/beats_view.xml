@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.gauravk.audiovisualizer.visualizer.WaveVisualizer
+        android:id="@+id/visualizer"
+        app:avColor="@color/dark_w6"
+        android:rotation="270"
+        android:scaleX="2"
+        app:avDensity="5"
+        app:avSpeed="medium"
+        app:avType="fill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="@dimen/back"
+        android:layout_height="@dimen/back"
+        android:background="@color/buttons"
+        android:drawableTint="@color/dark_w5"
+        android:drawableLeft="@drawable/backico"
+        android:onClick="backPress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

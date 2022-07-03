@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/elemental"
+    android:gravity="center_vertical"
+
+    android:layout_marginLeft="@dimen/elemental_margin"
+    android:layout_marginRight="@dimen/elemental_margin"
+    android:layout_marginBottom="@dimen/elemental_padding"
+    android:layout_marginTop="@dimen/elemental_padding"
+
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:onClick="elementalClick">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/element">
+
+        <ImageView
+            android:id="@+id/elementalAlbumArt"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:src="@mipmap/album_art"
+            android:background="@drawable/roundedsmall"
+            android:adjustViewBounds="true"/>
+
+        <LinearLayout
+            android:id="@+id/nestedLinear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/titleView"
+                style="@style/textViewTheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:text="@string/defaultTitle"/>
+
+            <TextView
+                android:id="@+id/artistView"
+                style="@style/textViewTheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="normal"
+                android:text="@string/defaultArtist"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewParenthesis"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/elemental_text"
+            android:layout_weight="1"
+            android:gravity="center|end"
+            android:text="parenthesis"
+            android:textColor="@color/dark_w8"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>

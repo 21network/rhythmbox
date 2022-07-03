@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/finalPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_w8"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/currentPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_w8"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/trackArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/defaultArtist"
+        android:textColor="@color/dark_w8"
+        android:textSize="@dimen/trackArtist"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumArt"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <ScrollView
+        android:id="@+id/trackTitleScroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/albumArt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statsButton"
+        app:layout_constraintVertical_bias="0.196">
+
+        <TextView
+            android:id="@+id/trackTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/defaultTitle"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:scrollHorizontally="true"
+            android:textColor="@color/dark_w8"
+            android:textSize="@dimen/trackTitle" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="@dimen/back"
+        android:layout_height="@dimen/back"
+        android:background="@color/buttons"
+        android:drawableLeft="@drawable/backico"
+        android:onClick="backPress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/statsButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/statico"
+        android:gravity="center"
+        android:onClick="showStatsButton"
+        app:layout_constraintEnd_toStartOf="@+id/pvButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pvButton"
+        android:layout_width="@dimen/plvi"
+        android:layout_height="@dimen/plvi"
+        android:onClick="revealBeats"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/beatico"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/albumArt"
+        android:layout_width="@dimen/alar"
+        android:layout_height="@dimen/alar"
+        android:background="@drawable/rounded"
+        android:clipToOutline="true"
+        android:src="@mipmap/album_art"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.322" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="@dimen/seekw"
+        android:layout_height="@dimen/seekh"
+        android:progressBackgroundTint="@color/seekProT"
+        android:progressTint="@color/seekTint"
+        android:thumbTint="@color/seekThumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumArt"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="@dimen/prev"
+        android:layout_height="@dimen/prev"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/tpreviousico"
+        android:onClick="previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playpause"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.213" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="@dimen/next"
+        android:layout_height="@dimen/next"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/tnextico"
+        android:onClick="next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/playpause"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.213" />
+
+    <Button
+        android:id="@+id/playpause"
+        android:layout_width="@dimen/play"
+        android:layout_height="@dimen/play"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/pauseico"
+        android:onClick="playPause"
+        android:tag="playing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/next"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/previous"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.213" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

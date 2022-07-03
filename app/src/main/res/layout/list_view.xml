@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="@dimen/back"
+        android:layout_height="@dimen/back"
+        android:background="@color/buttons"
+        android:drawableLeft="@drawable/backico"
+        android:onClick="backPress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/addico"
+        android:onClick="addResource"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="@dimen/plvi"
+        android:layout_height="@dimen/plvi"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/createico"
+        android:onClick="editList"
+        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="@dimen/savebutton"
+        android:layout_height="@dimen/savebutton"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/saveico"
+        android:onClick="saveEditedPlaylist"
+        app:layout_constraintEnd_toStartOf="@+id/createButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <Button
+        android:id="@+id/newMediaFileButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:layout_marginTop="4dp"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/uploadico"
+        android:onClick="addResourceLocal"
+        app:layout_constraintEnd_toEndOf="@+id/addButton"
+        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintStart_toStartOf="@+id/addButton"
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <Button
+        android:id="@+id/newFolderResourceButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/folderico"
+        android:onClick="addResourceFromDir"
+        app:layout_constraintEnd_toEndOf="@+id/addButton"
+        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintStart_toStartOf="@+id/addButton"
+        app:layout_constraintTop_toBottomOf="@+id/newMediaFileButton" />
+
+    <Button
+        android:id="@+id/newYTFileButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/youtubeico"
+        android:onClick="addResourceYT"
+        app:layout_constraintEnd_toEndOf="@+id/addButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/addButton"
+        app:layout_constraintTop_toBottomOf="@+id/newFolderResourceButton" />
+
+    <Button
+        android:id="@+id/export"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/exportico"
+        android:onClick="exportPlaylist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newYTFileButton" />
+
+    <Button
+        android:id="@+id/floatingActionButton"
+        android:layout_width="@dimen/stat"
+        android:layout_height="@dimen/stat"
+        android:background="@color/buttons"
+        android:drawableRight="@drawable/playingico"
+        android:onClick="floaterClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
