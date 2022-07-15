@@ -19,6 +19,7 @@ import android.os.IBinder;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,11 +31,14 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -125,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
     // Manager for recycled views
     ERecyclerAdapter era;
     EPRecyclerAdapter erap;
+
+    // Event Touch Trackers
+    boolean doneOld = false, doneNew = false;
+    float oldX, oldY, newX, newY;
 
     // Visualizer
     WaveVisualizer visualizer;
@@ -248,11 +256,12 @@ public class MainActivity extends AppCompatActivity {
         pli.setBrowsingPlaylist(stripper(playListName));
 
         // Getting current position if it exists
-        int position = 0;
+        int position = playlist[0].length - 1;
+        Log.d(TAG, "initPlayListTrackView: " + position);
         if (pli != null && pli.getBrowsingPlaylist() != null){
             position = pli.getPosition() - 3;
             if (position < 0 || position > (pli.getPlaylist(pli.getBrowsingPlaylist())[0].length)){
-                position = 0;
+                position = playlist[0].length - 1;
             }
         }
         ((RecyclerView)findViewById(R.id.recyclerView)).scrollToPosition(position);
@@ -286,6 +295,50 @@ public class MainActivity extends AppCompatActivity {
 
         currentPositionT = (TextView) findViewById(R.id.currentPosition);
         finalPositionT = (TextView) findViewById(R.id.finalPosition);
+
+        // region Dynamic Playlist Navigation
+
+        (findViewById(R.id.trackViewLayout)).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch(motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN: {
+                        oldX = motionEvent.getX();
+                        oldY = motionEvent.getY();
+                        doneOld = true;
+                        break; }
+                    case MotionEvent.ACTION_UP: {
+                        newX = motionEvent.getX();
+                        newY = motionEvent.getY();
+                        doneNew = true;
+                        break; }
+                }
+                if (doneOld && doneNew){
+                    doneOld = false;
+                    doneNew = false;
+                    Log.d(TAG, "onTouch: FROM " + oldX + " TO " + newX);
+                    if (oldX == newX){
+                        findViewById(R.id.playpause).performClick();
+                    }
+                    if (oldX > newX){
+                        if ( (oldX - newX) < 50){
+                            findViewById(R.id.playpause).performClick();
+                        } else {
+                            findViewById(R.id.next).performClick();
+                        }
+                    } else {
+                        if ((newX - oldX) < 50){
+                            findViewById(R.id.playpause).performClick();
+                        } else {
+                            findViewById(R.id.previous).performClick();
+                        }
+                    }
+                }
+                return true;
+            }
+        });
+
+        // endregion Dynamic Playlist Navigation
 
         updateView("trackview");
 
@@ -797,7 +850,7 @@ public class MainActivity extends AppCompatActivity {
             FFmpeg.getInstance().init(getApplication());
             YoutubeDLRequest yr = new YoutubeDLRequest(link);
             yr.addOption("-o", new File(outpath).getAbsolutePath() + "/%(title)s.%(ext)s");
-            yr.addOption("-f", "bestaudio");
+            yr.addOption("-f", "bestaudio[ext=m4a]");
             yr.addOption("--add-metadata", "true");
             YoutubeDL.getInstance().execute(yr, ((progress, etaInSeconds) -> {
                 //a.setMessage(progress + "% (ETA " + etaInSeconds + " seconds)");
@@ -963,9 +1016,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openPlaylist(String playListName){
         pli.setBrowsingPlaylist(stripperNoSpace(playListName));
-        String[][] xmlContent = pli.getBrowsingPlaylistTracks();
-        raptor(xmlContent[0], xmlContent[1], getBlank(xmlContent[0].length), xmlContent[2]);
-        findViewById(R.id.createButton).setVisibility(View.VISIBLE);
+//        String[][] xmlContent = pli.getBrowsingPlaylistTracks();
+//        raptor(xmlContent[0], xmlContent[1], getBlank(xmlContent[0].length), xmlContent[2]);
+//        findViewById(R.id.createButton).setVisibility(View.VISIBLE);
+        initPlayListTrackView(stripperNoSpace(playListName));
         updateView("playlisttrackview");
     }
 
